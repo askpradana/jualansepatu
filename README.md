@@ -1,16 +1,9 @@
 # jualansepatu
 
-A new Flutter project.
+Projek Jualan Sepatu list page dengan dummy.
+Tested in Iphone 11 iOs 14.3
+MediaQuery dkk. belum di setting karena perlu waktu
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+# Sebuah screenshot?
+![picture 1](images/286e711c2dfad88d0594c6bd5b9d088f3235ef777cd67e12ebfc305a703da9fc.png)  
+![picture 2](images/4cd68ca66def39a72c020fbf49e99a41d3ece9ecd4483ce95d57f9557297ae6e.png)  
