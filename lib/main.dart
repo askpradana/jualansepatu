@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:jualansepatu/detailpage.dart';
 import 'package:jualansepatu/produk.dart';
 
 void main() {

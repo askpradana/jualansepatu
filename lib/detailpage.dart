@@ -196,6 +196,9 @@ _gambarSepatu() {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBarMantapJiwa(
+        onPressed: (){
+          Navigator.pop(context);
+        },
         ikonKiri: Icons.arrow_back,
         ikonKanan: Icons.favorite,
         warnaIkonKanan: Colors.red,

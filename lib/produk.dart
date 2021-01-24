@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:jualansepatu/detailpage.dart';
 import 'package:jualansepatu/widget_appbar.dart';
 
 class KartuItem extends StatelessWidget {
@@ -7,41 +8,47 @@ class KartuItem extends StatelessWidget {
     return Container(
       width: 200,
       height: 200,
-      child: Card(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            Container(
-              padding: EdgeInsets.symmetric(horizontal: 15),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Container(
-                    height: 20,
-                    width: 35,
-                    margin: EdgeInsets.all(5),
-                    color: Colors.blue,
-                    child: Text("30%"),
-                  ),
-                  Icon(Icons.favorite)
-                ],
+      child: InkWell(
+        onTap: (){
+          Navigator.push(context, 
+          MaterialPageRoute(builder: (context) => ProductDetailPage()));
+        },
+        child: Card(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Container(
+                padding: EdgeInsets.symmetric(horizontal: 15),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(
+                      height: 20,
+                      width: 35,
+                      margin: EdgeInsets.all(5),
+                      color: Colors.blue,
+                      child: Text("30%"),
+                    ),
+                    Icon(Icons.favorite)
+                  ],
+                ),
               ),
-            ),
-            Image.asset("images/sepatucampur.png", height: 100),
-            Text("Nike Airmax 20"),
-            Text("\$240.00"),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Icon(Icons.star, color: Colors.yellow, size: 20),
-                Icon(Icons.star, color: Colors.yellow, size: 20),
-                Icon(Icons.star, color: Colors.yellow, size: 20),
-                Icon(Icons.star, color: Colors.yellow, size: 20),
-                Icon(Icons.star_half, color: Colors.yellow, size: 20),
-                Text("(4.5)")
-              ],
-            )
-          ],
+              Image.asset("images/sepatucampur.png", height: 100),
+              Text("Nike Airmax 20"),
+              Text("\$240.00"),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(Icons.star, color: Colors.yellow, size: 20),
+                  Icon(Icons.star, color: Colors.yellow, size: 20),
+                  Icon(Icons.star, color: Colors.yellow, size: 20),
+                  Icon(Icons.star, color: Colors.yellow, size: 20),
+                  Icon(Icons.star_half, color: Colors.yellow, size: 20),
+                  Text("(4.5)")
+                ],
+              )
+            ],
+          ),
         ),
       ),
     );

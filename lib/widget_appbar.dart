@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 
 class AppBarMantapJiwa extends StatelessWidget implements PreferredSizeWidget {
 
-  AppBarMantapJiwa({this.ikonKiri, this.ikonKanan, this.warnaIkonKanan});
+  AppBarMantapJiwa({this.ikonKiri, this.ikonKanan, this.warnaIkonKanan, this.onPressed});
   final IconData ikonKiri, ikonKanan;
   final Color warnaIkonKanan;
+  final Function onPressed;
 
   @override
   Size get preferredSize => const Size.fromHeight(50);
@@ -12,7 +13,11 @@ class AppBarMantapJiwa extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      leading: Icon(ikonKiri, color: Colors.black),
+      leading: IconButton(
+        icon: Icon(ikonKiri),
+        color: Colors.black,
+        onPressed: onPressed,
+      ),
       title: Text(
         "XE",
         style: TextStyle(color: Colors.black),
