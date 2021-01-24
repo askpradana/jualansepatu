@@ -1,6 +1,53 @@
 import 'package:flutter/material.dart';
 import 'package:jualansepatu/widget_appbar.dart';
 
+class KartuItem extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 200,
+      height: 200,
+      child: Card(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Container(
+              padding: EdgeInsets.symmetric(horizontal: 15),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Container(
+                    height: 20,
+                    width: 35,
+                    margin: EdgeInsets.all(5),
+                    color: Colors.blue,
+                    child: Text("30%"),
+                  ),
+                  Icon(Icons.favorite)
+                ],
+              ),
+            ),
+            Image.asset("images/sepatucampur.png", height: 100),
+            Text("Nike Airmax 20"),
+            Text("\$240.00"),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(Icons.star, color: Colors.yellow, size: 20),
+                Icon(Icons.star, color: Colors.yellow, size: 20),
+                Icon(Icons.star, color: Colors.yellow, size: 20),
+                Icon(Icons.star, color: Colors.yellow, size: 20),
+                Icon(Icons.star_half, color: Colors.yellow, size: 20),
+                Text("(4.5)")
+              ],
+            )
+          ],
+        ),
+      ),
+    );
+  }
+}
+
 class ProductList extends StatefulWidget {
   @override
   _ProductListState createState() => _ProductListState();
@@ -17,8 +64,34 @@ class _ProductListState extends State<ProductList> {
       children: [
         _menuAtas(),
         _chips(),
+        _seharusnyaPakeGridViewTapiKarenaUdahmalemNgeriNggaNuntut()
       ],
     );
+  }
+
+  _seharusnyaPakeGridViewTapiKarenaUdahmalemNgeriNggaNuntut() {
+    return Column(
+        children: [
+          Row(
+            children: [
+              KartuItem(),
+              KartuItem()
+            ],
+          ),
+          Row(
+            children: [
+              KartuItem(),
+              KartuItem()
+            ],
+          ),
+          Row(
+            children: [
+              KartuItem(),
+              KartuItem()
+            ],
+          ),
+        ],
+      );
   }
 
   Row _chips() {
@@ -117,16 +190,15 @@ class _ProductListState extends State<ProductList> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBarMantapJiwa(
-        ikonKiri: Icons.home,
-        ikonKanan: Icons.search,
-        warnaIkonKanan: Colors.black,
-      ),
-      body: _bikinBody(),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: _tombolKhusus(),
-      bottomNavigationBar: _bottomAppBarKhusus()
-    );
+        appBar: AppBarMantapJiwa(
+          ikonKiri: Icons.home,
+          ikonKanan: Icons.search,
+          warnaIkonKanan: Colors.black,
+        ),
+        body: _bikinBody(),
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+        floatingActionButton: _tombolKhusus(),
+        bottomNavigationBar: _bottomAppBarKhusus());
   }
 
   _tombolKhusus() {
@@ -134,7 +206,7 @@ class _ProductListState extends State<ProductList> {
       alignment: Alignment.topRight,
       children: [
         FloatingActionButton(
-          onPressed: () { },
+          onPressed: () {},
           tooltip: 'Increment',
           child: Icon(Icons.add_shopping_cart),
           elevation: 2.0,
@@ -148,9 +220,13 @@ class _ProductListState extends State<ProductList> {
             width: 15,
             height: 15,
             decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: Color(0xffc32c37),
-                border: Border.all(color: Colors.white, width: 1)),
+              shape: BoxShape.circle,
+              color: Color(0xffc32c37),
+              border: Border.all(
+                color: Colors.white,
+                width: 1,
+              ),
+            ),
           ),
         ),
       ],
@@ -171,25 +247,25 @@ class _ProductListState extends State<ProductList> {
               iconSize: 30.0,
               padding: EdgeInsets.only(left: 28.0),
               icon: Icon(Icons.home),
-              onPressed: (){},
+              onPressed: () {},
             ),
             IconButton(
               iconSize: 30.0,
               padding: EdgeInsets.only(right: 28.0),
               icon: Icon(Icons.favorite),
-              onPressed: (){},
+              onPressed: () {},
             ),
             IconButton(
               iconSize: 30.0,
               padding: EdgeInsets.only(left: 28.0),
               icon: Icon(Icons.notes),
-              onPressed: (){},
+              onPressed: () {},
             ),
             IconButton(
               iconSize: 30.0,
               padding: EdgeInsets.only(right: 28.0),
               icon: Icon(Icons.person),
-              onPressed: (){},
+              onPressed: () {},
             ),
           ],
         ),

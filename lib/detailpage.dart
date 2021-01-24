@@ -9,6 +9,22 @@ class ProductDetailPage extends StatefulWidget {
 
 class _ProductDetailPageState extends State<ProductDetailPage> {
   int indexSelected = -1;
+  bool pilihWarna = false;
+
+  //Buat Radio --
+  int pilihanRadio;
+  @override
+  void initState() { 
+    super.initState();
+    pilihanRadio = 0;
+  }
+  //Fungsi radio kalau dipencet
+  radioTerpilih(int mana){
+    setState(() {
+      pilihanRadio = mana;
+    });
+  }
+  //--
 
   _bikinbody() {
     final panjangHorizontal = MediaQuery.of(context).size.width;
@@ -24,108 +40,137 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
           ),
         ),
         _gambarSepatu(),
-        Container(
-          margin: EdgeInsets.symmetric(horizontal: 15, vertical: 20),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    "Nike Air Max 200",
-                    style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
-                  ),
-                  Row(
-                    children: [
-                      Icon(
-                        Icons.star,
-                        color: Colors.yellow,
-                      ),
-                      Text("(4.5)")
-                    ],
-                  ),
-                ],
-              ),
-              Padding(
-                padding: const EdgeInsets.fromLTRB(0, 10, 0, 15),
-                child: Text("Built for natural motion, the nike® Flex Shoes"),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text("Size: "),
-                  Container(
-                    padding: const EdgeInsets.all(10),
-                    child: ChoiceChip(
-                      label: Text("US 6"),
-                      selected: indexSelected == 0,
-                      onSelected: (value) {
-                        setState(() {
-                          indexSelected = value ? 0 : -1;
-                        });
-                      },
-                    ),
-                  ),
-                  Container(
-                    padding: const EdgeInsets.all(10),
-                    child: ChoiceChip(
-                      label: Text("US 7"),
-                      selected: indexSelected == 1,
-                      onSelected: (value) {
-                        setState(() {
-                          indexSelected = value ? 1 : -1;
-                        });
-                      },
-                    ),
-                  ),
-                  Container(
-                    padding: const EdgeInsets.all(10),
-                    child: ChoiceChip(
-                      label: Text("US 8"),
-                      selected: indexSelected == 2,
-                      onSelected: (value) {
-                        setState(() {
-                          indexSelected = value ? 2 : -1;
-                        });
-                      },
-                    ),
-                  ),
-                  Container(
-                    padding: const EdgeInsets.all(10),
-                    child: ChoiceChip(
-                      label: Text("US 9"),
-                      selected: indexSelected == 3,
-                      onSelected: (value) {
-                        setState(() {
-                          indexSelected = value ? 3 : -1;
-                        });
-                      },
-                    ),
-                  ),
-                ],
-              ),
-              Row(
-                children: [
-                  Text("Available Color: "),
-                  InkWell(
-                    onTap: (){},
-                    child: Container(
-                      color: Colors.red,
-                      width: 10,
-                      height: 10,
-                    ),
-                  )
-                ],
-              )
-            ],
-          ),
-        )
+        _containerBawah()
       ],
     );
   }
 
-  SizedBox _gambarSepatu() {
+  _containerBawah() {
+    return Container(
+        margin: EdgeInsets.symmetric(horizontal: 15, vertical: 20),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  "Nike Air Max 200",
+                  style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                ),
+                Row(
+                  children: [
+                    Icon(
+                      Icons.star,
+                      color: Colors.yellow,
+                    ),
+                    Text("(4.5)")
+                  ],
+                ),
+              ],
+            ),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(0, 10, 0, 15),
+              child: Text("Built for natural motion, the nike® Flex Shoes"),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text("Size: "),
+                Container(
+                  padding: const EdgeInsets.all(10),
+                  child: ChoiceChip(
+                    label: Text("US 6"),
+                    selected: indexSelected == 0,
+                    onSelected: (value) {
+                      setState(() {
+                        indexSelected = value ? 0 : -1;
+                      });
+                    },
+                  ),
+                ),
+                Container(
+                  padding: const EdgeInsets.all(10),
+                  child: ChoiceChip(
+                    label: Text("US 7"),
+                    selected: indexSelected == 1,
+                    onSelected: (value) {
+                      setState(() {
+                        indexSelected = value ? 1 : -1;
+                      });
+                    },
+                  ),
+                ),
+                Container(
+                  padding: const EdgeInsets.all(10),
+                  child: ChoiceChip(
+                    label: Text("US 8"),
+                    selected: indexSelected == 2,
+                    onSelected: (value) {
+                      setState(() {
+                        indexSelected = value ? 2 : -1;
+                      });
+                    },
+                  ),
+                ),
+                Container(
+                  padding: const EdgeInsets.all(10),
+                  child: ChoiceChip(
+                    label: Text("US 9"),
+                    selected: indexSelected == 3,
+                    onSelected: (value) {
+                      setState(() {
+                        indexSelected = value ? 3 : -1;
+                      });
+                    },
+                  ),
+                ),
+              ],
+            ),
+            Row(
+              children: [
+                Text("Available Color: "),
+                Radio(
+                  value: 1, 
+                  groupValue: pilihanRadio, 
+                  onChanged: (mana){
+                    radioTerpilih(mana);
+                  },
+                  activeColor: Colors.yellow,
+                ),
+                Radio(
+                  value: 2, 
+                  groupValue: pilihanRadio, 
+                  onChanged: (mana){
+                    radioTerpilih(mana);
+                  },
+                  activeColor: Colors.red,
+                ),
+                Radio(
+                  value: 3, 
+                  groupValue: pilihanRadio, 
+                  onChanged: (mana){
+                    radioTerpilih(mana);
+                  },
+                  activeColor: Colors.orange
+                ),
+                Radio(
+                  value: 4, 
+                  groupValue: pilihanRadio, 
+                  onChanged: (mana){
+                    radioTerpilih(mana);
+                  },
+                  activeColor: Colors.blue,
+                ),
+              ],
+            ),
+          ],
+        ),
+      );
+  }
+
+_gambarSepatu() {
     return SizedBox(
       height: 300,
       width: double.infinity,
