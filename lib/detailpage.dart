@@ -8,9 +8,10 @@ class ProductDetailPage extends StatefulWidget {
 }
 
 class _ProductDetailPageState extends State<ProductDetailPage> {
+  int indexSelected = -1;
 
-  _bikinbody(){
-  final panjangHorizontal = MediaQuery.of(context).size.width;
+  _bikinbody() {
+    final panjangHorizontal = MediaQuery.of(context).size.width;
     return Column(
       children: [
         Center(
@@ -22,19 +23,101 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
             child: Center(child: Text("30%")),
           ),
         ),
-        SizedBox(
-          height: 300,
-          width: double.infinity,
-          child: Carousel(
-            autoplay: false,
-            dotSize: 5,
-            dotBgColor: Colors.transparent,
-            dotColor: Colors.black,
-            dotIncreasedColor: Colors.red,
-            images: [
-              Image.asset('images/sepatucampur.png'),
-              Image.asset('images/sepatulagi.png'),
-              Image.asset('images/sepatumerah.png')
+        _gambarSepatu(),
+        Container(
+          margin: EdgeInsets.symmetric(horizontal: 15, vertical: 20),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "Nike Air Max 200",
+                    style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                  ),
+                  Row(
+                    children: [
+                      Icon(
+                        Icons.star,
+                        color: Colors.yellow,
+                      ),
+                      Text("(4.5)")
+                    ],
+                  ),
+                ],
+              ),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(0, 10, 0, 15),
+                child: Text("Built for natural motion, the nike® Flex Shoes"),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text("Size: "),
+                  Container(
+                    padding: const EdgeInsets.all(10),
+                    child: ChoiceChip(
+                      label: Text("US 6"),
+                      selected: indexSelected == 0,
+                      onSelected: (value) {
+                        setState(() {
+                          indexSelected = value ? 0 : -1;
+                        });
+                      },
+                    ),
+                  ),
+                  Container(
+                    padding: const EdgeInsets.all(10),
+                    child: ChoiceChip(
+                      label: Text("US 7"),
+                      selected: indexSelected == 1,
+                      onSelected: (value) {
+                        setState(() {
+                          indexSelected = value ? 1 : -1;
+                        });
+                      },
+                    ),
+                  ),
+                  Container(
+                    padding: const EdgeInsets.all(10),
+                    child: ChoiceChip(
+                      label: Text("US 8"),
+                      selected: indexSelected == 2,
+                      onSelected: (value) {
+                        setState(() {
+                          indexSelected = value ? 2 : -1;
+                        });
+                      },
+                    ),
+                  ),
+                  Container(
+                    padding: const EdgeInsets.all(10),
+                    child: ChoiceChip(
+                      label: Text("US 9"),
+                      selected: indexSelected == 3,
+                      onSelected: (value) {
+                        setState(() {
+                          indexSelected = value ? 3 : -1;
+                        });
+                      },
+                    ),
+                  ),
+                ],
+              ),
+              Row(
+                children: [
+                  Text("Available Color: "),
+                  InkWell(
+                    onTap: (){},
+                    child: Container(
+                      color: Colors.red,
+                      width: 10,
+                      height: 10,
+                    ),
+                  )
+                ],
+              )
             ],
           ),
         )
@@ -42,6 +125,28 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
     );
   }
 
+  SizedBox _gambarSepatu() {
+    return SizedBox(
+      height: 300,
+      width: double.infinity,
+      child: Carousel(
+        autoplay: false,
+        dotSize: 5,
+        dotBgColor: Colors.transparent,
+        dotColor: Colors.black,
+        dotIncreasedColor: Colors.red,
+        images: [
+          Image.asset('images/sepatucampur.png'),
+          Image.asset('images/sepatulagi.png'),
+          Image.asset('images/sepatumerah.png')
+        ],
+      ),
+    );
+  }
+
+  //-----------
+  //MAIN DISINI
+  //-----------
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -65,10 +170,9 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Container(
-                  margin: EdgeInsets.only(top: 4),
-                  child: Text("\$")),
-                Text("269.00",
+                Container(margin: EdgeInsets.only(top: 4), child: Text("\$")),
+                Text(
+                  "269.00",
                   style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
                 ),
               ],
@@ -77,21 +181,20 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
               width: 150,
               margin: const EdgeInsets.all(10),
               child: FlatButton(
-                onPressed: (){}, 
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Icon(Icons.shopping_cart, color: Colors.indigo),
-                    Text("Add To Cart",
-                      style: TextStyle(color: Colors.indigo),
-                    ),
-                  ],
-                ),
-                color: Colors.grey[350],
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20)
-                )
-              ),
+                  onPressed: () {},
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Icon(Icons.shopping_cart, color: Colors.indigo),
+                      Text(
+                        "Add To Cart",
+                        style: TextStyle(color: Colors.indigo),
+                      ),
+                    ],
+                  ),
+                  color: Colors.grey[350],
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20))),
             ),
           ],
         ),
