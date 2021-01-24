@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:jualansepatu/detailpage.dart';
 import 'package:jualansepatu/produk.dart';
 
 void main() {
@@ -10,7 +11,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: ProductList(),
+      home: ProductDetailPage(),
     );
   }
 }

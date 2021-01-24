@@ -117,7 +117,11 @@ class _ProductListState extends State<ProductList> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBarMantapJiwa(),
+      appBar: AppBarMantapJiwa(
+        ikonKiri: Icons.home,
+        ikonKanan: Icons.search,
+        warnaIkonKanan: Colors.black,
+      ),
       body: _bikinBody(),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: _tombolKhusus(),
